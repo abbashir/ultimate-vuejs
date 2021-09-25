@@ -4,6 +4,11 @@
 
 <script>
 export default {
+    data(){
+        return{
+            title: "contact page"
+        }
+    }
 
 }
 </script>
