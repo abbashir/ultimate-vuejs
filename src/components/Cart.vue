@@ -10,42 +10,49 @@
 
     <li
       class="list-group-item d-flex justify-content-between align-items-start"
+      v-for="item in items"
+      :key="item.id"
     >
       <div class="ms-2 me-auto">
-        <div class="fw-bold">Subheading</div>
-        Cras justo odio
+        {{ item.product_name }}
       </div>
-      <span class="badge bg-primary rounded-pill">14</span>
-    </li>
-    <li
-      class="list-group-item d-flex justify-content-between align-items-start"
-    >
-      <div class="ms-2 me-auto">
-        <div class="fw-bold">Subheading</div>
-        Cras justo odio
-      </div>
-      <span class="badge bg-primary rounded-pill">14</span>
-    </li>
-    <li
-      class="list-group-item d-flex justify-content-between align-items-start"
-    >
-      <div class="ms-2 me-auto">
-        <div class="fw-bold">Subheading</div>
-        Cras justo odio
-      </div>
-      <span class="badge bg-primary rounded-pill">14</span>
+      <span class="badge bg-primary rounded-pill">{{ item.price }}</span>
+      <button type="button" class="btn btn-danger" @click="itemRemove(item)">
+        Remove
+      </button>
     </li>
     <span>
       <li class="list-group-item active" aria-current="true">
         Total:
-        <span style="float: right">250</span>
+        <span style="float: right">{{ totalPrice }}</span>
       </li>
     </span>
   </ol>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {};
+  },
+  computed: {
+    items() {
+      return this.$store.getters.getCart;
+    },
+    totalPrice() {
+      var total = 0;
+      this.items.forEach((item) => {
+        total += parseFloat(item.price);
+      });
+      return total;
+    },
+  },
+  methods: {
+    itemRemove(item) {
+      this.$store.commit('removeItem', item)
+    },
+  },
+};
 </script>
 
 <style>
