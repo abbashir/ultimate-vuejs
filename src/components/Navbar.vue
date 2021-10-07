@@ -9,6 +9,13 @@
           <li class="nav-item">
             <router-link to="/about" class="nav-link active">About</router-link>
           </li>
+
+          <li class="nav-item">
+            <router-link to="Timer" class="nav-link active">Clock</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link :to="{name: 'ReactionTimer'}" class="nav-link active">Reaction Timer</router-link>
+          </li>
         </ul>
         <form class="d-flex">
           <input
