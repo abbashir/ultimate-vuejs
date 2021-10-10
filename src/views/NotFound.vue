@@ -1,0 +1,4 @@
+<template>
+  <h1>404</h1>
+  <p>This page not found</p>
+</template>
